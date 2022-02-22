@@ -1,36 +1,11 @@
-import discord
+
 import requests
 import time
 import json
 from bs4 import BeautifulSoup
 import cloudscraper
-import os
-from dotenv import load_dotenv
 
 
-def main():  
-    
-    load_dotenv()
-    TOKEN = os.getenv('TOKEN')
-
-    client = discord.Client()
-
-    @client.event
-    async def on_ready():
-        print(f'{client.user} has connected to Discord!')
-    @client.event
-
-    async def on_message(message):
-        if message.author == client.user:
-            return
-        if "!check" in message.content.lower():
-            await message.channel.send("Checking account...")
-            msg = message.content.split(" ")
-            value = str(get_account_value(msg[1]))
-        
-            await message.channel.send(value)
-
-    client.run(TOKEN)
 
 
 
@@ -103,4 +78,4 @@ def get_eth_price():
     return int(eth_price)
 
 if __name__ == '__main__':
-    main()
+    get_account_value("eth adress here")
